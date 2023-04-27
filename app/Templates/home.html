@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encore</title>
-    <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
     {% extends 'header.html' %}
 
     {% block content %}   
@@ -21,12 +10,12 @@
     <div class="col-sm-12 col-md-12 col-lg-6 pb-4">
         <h1 class="display-4 font-weight-bold">Elevate your listening</h1>
         <h5>Everyday headphones that make your favorite artists sound like their performing a never-ending encore.</h5>
-        <a class="btn btn-primary mt-2" href="/products">FIND YOUR SET</a>
+        <a class="btn btn-primary mt-2" href="/Products">FIND YOUR SET</a>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-6">
-        <img class="img-fluid rounded" src="https://www.zdnet.com/a/img/resize/73e72471fa43a60f17a519164936476f60ac62d0/2022/07/05/9f811247-1b83-4fed-a5bf-9791bf66c4ab/razer-barracuda-pro-flat.jpg?auto=webp&fit=crop&height=900&width=1200" alt="Headphones">
+        <img class="img-fluid rounded" src="https://static.independent.co.uk/2022/06/15/11/baby%20monitors%20indybest%20copy.jpg?quality=75&width=990&crop=2048%3A1536%2Csmart&auto=webp" alt="Headphones">
     </div>
-    </div>
+    </div>      
 </div>
 <!--Products-->
 <div class="container py-3">
@@ -37,7 +26,7 @@
 		{% for p in product %}
 		<div class="col-sm-12 col-md-6 col-lg-3 pb-4">
 			<div class="card h-100" style="border:none">
-                <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name}}" style="width: auto; height: 250px; object-fit: scale-down; ">
+            <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name}}" style="width: auto; height: 250px; object-fit: scale-down; ">
 			<div class="card-body">
 				<h5 class="card-title">{{ p.product_name }}</h5>
                 <p class="card-text text-muted" style="font-size:12px">{{ p.product_type }}</p>
@@ -50,9 +39,7 @@
 	</div>
 </div>
 {% endblock %}
-    <!-- Optional Javascript -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
+<div class="container text-right">
+    <a href="/Products">View more</a>
+  </div>
+</div>

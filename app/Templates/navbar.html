@@ -1,22 +1,61 @@
-<!--Navbar-->
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="/">
-       Encore
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href=" ">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href=" ">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href=" ">Contact</a>
-        </li>
+
+<!--Navbar 1-->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mr-auto"> 
       </ul>
     </div>
-   </nav>
+    <div class="mx-auto order-0">
+      <a class="navbar-brand m-0" href="/" style="font-size:30px">Encore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-primary" href=" ">{{user.username|title}}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-primary" href="/register">Register</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!--Navbar 2-->
+  <div class="container-fluid sticky-top bg-dark">
+    <nav class="container navbar navbar-expand-md navbar-dark">
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+          {% for tag in nav_tags %}
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/{{ tag.tag_slug }}">{{ tag.tag_name}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/Products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/articles">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=" ">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
