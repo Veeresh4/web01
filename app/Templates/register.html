@@ -1,8 +1,8 @@
 {% extends "header.html" %}
 
-	{% block content %}   
-    
-    {% load crispy_forms_tags %}
+	{% block content %}
+
+	{% load crispy_forms_tags %}   <!--add this-->        
 
 	<!--Register--> 
 	<div class="container py-5">
@@ -11,7 +11,7 @@
 	    <br>
 		<form method="POST">
 			{% csrf_token %}
-				{{ form }}              
+			{{ form|crispy }}         <!--add this-->            
 			<br>
 			<button class="btn btn-primary" type="submit">Register</button>
 		</form>

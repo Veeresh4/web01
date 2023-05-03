@@ -1,45 +1,52 @@
-    {% extends 'header.html' %}
+{% extends 'header.html' %}
 
-    {% block content %}   
+  {% block content %}
 
-    {% load static %}
-    
-    <!--CTA-->
+  {% load static %}
+
+  <!--CTA-->
+  <div class="cta-banner"> 
     <div class="container py-5">
-    <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-6 pb-4">
-        <h1 class="display-4 font-weight-bold">Elevate your listening</h1>
-        <h5>Everyday headphones that make your favorite artists sound like their performing a never-ending encore.</h5>
-        <a class="btn btn-primary mt-2" href="/Products">FIND YOUR SET</a>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6 pb-4">
+          <h1 class="display-4 font-weight-bold">Elevate your listening</h1>
+          <h5>Everyday headphones that make your favorite artists sound like their performing a never-ending encore.</h5>
+          {% if user.is_authenticated %}
+            <a class="btn btn-danger mt-2" href="/user">VIEW WISHLIST</a>
+          {% else %}
+            <a class="btn btn-danger mt-2" href="/Products">FIND YOURS</a>
+          {% endif %}
+        </div>
+      </div>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-6">
-        <img class="img-fluid rounded" src="https://static.independent.co.uk/2022/06/15/11/baby%20monitors%20indybest%20copy.jpg?quality=75&width=990&crop=2048%3A1536%2Csmart&auto=webp" alt="Headphones">
-    </div>
-    </div>      
-</div>
+  </div>
+
 <!--Products-->
 <div class="container py-3">
     <h2>Products</h2>
-	<hr>
-	<br>
-	<div class="row">
-		{% for p in product %}
-		<div class="col-sm-12 col-md-6 col-lg-3 pb-4">
-			<div class="card h-100" style="border:none">
-            <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name}}" style="width: auto; height: 250px; object-fit: scale-down; ">
-			<div class="card-body">
-				<h5 class="card-title">{{ p.product_name }}</h5>
-                <p class="card-text text-muted" style="font-size:12px">{{ p.product_type }}</p>
-                <p class="card-text">{{ p.product_description }}</p>
-                <a href="{{ p.affiliate_url }}" class="btn btn-warning">Buy now</a>
+    <hr>
+    <br>
+    <div class="row">
+        {% for p in product %}
+            <div class="col-sm-12 col-md-6 col-lg-3 pb-4">
+                  <div class="card h-100" style="border:none">
+                    <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name }}" style="width: auto; height: 250px; object-fit: scale-down;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.product_name }}</h5>
+                          <p class="card-text text-muted" style="font-size:12px">{{ p.product_type }}</p>
+                          <p class="card-text">{{ p.product_description }}</p>
+                          <div class="row">
+                            <div class="col-6">
+                            </div>
+                            <div class="col-6">
+                            <a href="{{ p.affiliate_url }}" class="btn btn-warning">Buy now</a>	
+                            </div>
+                        </div>
+                      </div>
+                </div>
             </div>
-        </div>
-		</div>
-		{% endfor %}
-	</div>
+        {% endfor %}
+    </div>
 </div>
-{% endblock %}
-<div class="container text-right">
-    <a href="/Products">View more</a>
-  </div>
-</div>
+
+  {% endblock %}
